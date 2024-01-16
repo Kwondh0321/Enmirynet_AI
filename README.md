@@ -14,5 +14,7 @@ This project is created by the Leader of Enmirynet (Kwondh0321).
 
 ## Caution
 This project is copyrighted to Enmirynet in 2024.
+
 Details:
-  Backend Code: Open to All, Frontend Code: Open to All excluding design
+- Backend Code: Open to All
+- Frontend Code: Open to All excluding design
