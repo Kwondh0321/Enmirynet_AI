@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>AI_Enmirynet</title>
+  <link rel="stylesheet" href="gpt.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Fasthand&display=swap" rel="stylesheet">
+  <script src="main.js"></script>
+  <div class="head_title">
+    <a>En-MiryNet_AI</a>
+  </div>
+  <br>
+</head>
+
+<body>
+	<header>
+		<div class="input_box">
+    <input class="input_keyword" id="input_keyword" type="text" placeholder="AI와 대화하려면 입력하시오..." onkeypress="if(event.keyCode == 13){sendUserInput()}">
+    </input>
+    <button class="confirm-button" onclick="sendUserInput()">OK</button>
+  </div>
+	</header>
+
+  <br><br>
+  <div>
+    <div id="chatHistory">
+			<div id="chatting">Chatting</div>
+		</div>
+  </div>
+</body>
+
+</html>
