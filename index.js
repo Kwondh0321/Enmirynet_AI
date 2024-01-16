@@ -39,7 +39,7 @@ app.post("/chat", async (req, res) => {
 });
 
 async function getChatGPTResponse(prompt) {
-  const apiKey = "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";
+  const apiKey = ""; // Obtain an API key from OpenAI
   try {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
