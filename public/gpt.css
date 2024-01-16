@@ -45,7 +45,7 @@ a#TOP {
 
 .input_box {
   position: fixed;
-  top: 60px; /* 헤더 높이에 맞게 조절하세요 */
+  top: 60px; /* Adjust according to the header height */
   left: 0;
   width: 100%;
   display: flex;
@@ -53,7 +53,7 @@ a#TOP {
   align-items: center;
   text-align: center;
   margin-top: 3%;
-  z-index: 999; /* 헤더 위로 나타나도록 설정 */
+  z-index: 999; /* Set to appear above the header */
 }
 
 .input_keyword {
@@ -92,37 +92,38 @@ a#TOP {
 #chatHistory {
   width: 80%;
   margin: 0 auto;
-	background-color: #faf5db;
+  background-color: #faf5db;
   border-radius: 15px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   padding: 20px;
-  margin-top: 40px; /* 헤더와 input_box 띄우게하는 */
+  margin-top: 40px; /* Space between the header and input_box */
   color: #333;
   font-family: 'Gowun Dodum', sans-serif;
   font-size: 17px;
-	margin-bottom: auto;
-}
-#chatting {
-	text-align: center;
-	font-family: 'Salsa', cursive;
-	font-size: 15px;
-	font-weight: bold;
+  margin-bottom: auto;
 }
 
-/* 대화창 크기조정 (모바일이 아닌 스크린에선 750px로 고정) */
+#chatting {
+  text-align: center;
+  font-family: 'Salsa', cursive;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* Adjust chat window size (fixed to 750px on screens larger than mobile) */
 @media only screen and (min-width: 481px) {
   #chatHistory {
     max-width: 700px;
   }
 }
 
-/* 대화창 제목 */
+/* Chat window title */
 h3 {
   font-size: 1.5rem;
   margin-bottom: 15px;
 }
 
-/* 채팅 말풍선 */
+/* Chat bubbles */
 .chat-bubble {
   display: block;
   padding: 10px;
@@ -132,30 +133,30 @@ h3 {
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
 }
 
-/* ME 메시지 */
+/* ME message */
 .me-bubble {
   background: linear-gradient(135deg, #7799fd 0%, #33c2ff 100%);
   color: #333;
   text-align: right;
   margin-left: auto;
-	word-wrap: break-word; /* 글자가 너무 길어 말풍선을 넘어갈 때 자동으로 줄바꿈 */
+  word-wrap: break-word; /* Wrap text if it exceeds the bubble */
 }
 
-/* AI 메시지 */
+/* AI message */
 .ai-bubble {
   background: linear-gradient(135deg, #7ee782 0%, #baf96c 100%);
   color: #333;
   text-align: left;
   margin-right: auto;
-	word-wrap: break-word; /* 글자가 너무 길어 말풍선을 넘어갈 때 자동으로 줄바꿈 */
+  word-wrap: break-word; /* Wrap text if it exceeds the bubble */
 }
 
-/* System 메시지 */
+/* System message */
 .system-bubble {
   background: linear-gradient(135deg, #ff7a7a 0%, #ff3d3d 100%);
   color: #362b2b;
   text-align: left;
   margin-right: auto;
-	margin-left: auto;
-	word-wrap: break-word; /* 글자가 너무 길어 말풍선을 넘어갈 때 자동으로 줄바꿈 */
+  margin-left: auto;
+  word-wrap: break-word; /* Wrap text if it exceeds the bubble */
 }
