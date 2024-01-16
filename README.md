@@ -18,3 +18,6 @@ The source code of this project is subject to the following copyright terms:
 
 - Backend Code: Open to the public, anyone can use and modify.
 - Frontend Code: Open to the public, excluding the design. Modifications are allowed for functional purposes.
+
+# Warning
+Abusing this client can cause permanent service restriction
