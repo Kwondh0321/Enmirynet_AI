@@ -15,7 +15,7 @@ app.post("/chat", async (req, res) => {
   const express = require("express");
   const app = express();
   const allowedOrigins = [
-    "https://ai.ournicerver.com"
+    "" // Enter the Front-end domain link (cors policy)
   ];
   const origin = req.headers.origin;
 
