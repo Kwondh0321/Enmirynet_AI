@@ -1,5 +1,6 @@
 // Imported from "REST API of Enmirynet"
 
+const gptKey = process.env["GPT_Key"];
 const express = require("express");
 const app = express();
 const port = 3000;
@@ -10,7 +11,7 @@ app.use(express.json());
 app.listen(port, () => {
   console.log(`서버는 ${port} Port에서 정상작동 중입니다`);
 });
-//test
+
 app.post("/chat", async (req, res) => {
   const express = require("express");
   const app = express();
@@ -39,7 +40,7 @@ app.post("/chat", async (req, res) => {
 });
 
 async function getChatGPTResponse(prompt) {
-  const apiKey = ""; // Obtain an API key from OpenAI
+  const apiKey = gptKey; // Obtain an API key from OpenAI
   try {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
