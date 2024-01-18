@@ -10,12 +10,12 @@ app.use(express.json());
 app.listen(port, () => {
   console.log(`서버는 ${port} Port에서 정상작동 중입니다`);
 });
-
+//test
 app.post("/chat", async (req, res) => {
   const express = require("express");
   const app = express();
   const allowedOrigins = [
-    "" // Enter the Front-end domain link (cors policy)
+    "", // Enter the Front-end domain link (cors policy)
   ];
   const origin = req.headers.origin;
 
@@ -56,7 +56,7 @@ async function getChatGPTResponse(prompt) {
           },
           {
             role: "user",
-            content: prompt
+            content: prompt,
           },
         ],
       }),
@@ -75,4 +75,3 @@ async function getChatGPTResponse(prompt) {
     throw error;
   }
 }
-
