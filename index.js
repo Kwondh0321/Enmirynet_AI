@@ -1,4 +1,5 @@
 // Imported from "REST API of Enmirynet"
+// If you want to use this service, please visit "https://ai.ournicerver.com/"
 
 const gptKey = process.env["GPT_Key"];
 const express = require("express");
@@ -9,7 +10,7 @@ app.use(express.static("public"));
 app.use(express.json());
 
 app.listen(port, () => {
-  console.log(`서버는 ${port} Port에서 정상작동 중입니다`);
+  console.log(`The Server is running on PORT '${port}'`);
 });
 
 app.post("/chat", async (req, res) => {
