@@ -50,7 +50,7 @@ async function getChatGPTResponse(prompt) {
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: "gpt-4-0613",
+        model: "gpt-4-0613", // Replace `gpt-4-0613` with `gpt-3.5-turbo` if you don't have early access to GPT-4
         messages: [
           {
             role: "system",

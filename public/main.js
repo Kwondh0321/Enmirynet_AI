@@ -1,5 +1,14 @@
 let chatHistory = [];
 
+// Detecting Enter Key
+function DataTransfer(event, num) {
+  if (num == 1 && event && event.key === "Enter") {
+    sendUserInput();
+  } else if (num == 2) {
+    sendUserInput();
+  }
+}
+
 // Event function to scroll the input_box to the top when scrolling
 window.addEventListener("scroll", function () {
   const headTitle = document.querySelector(".head_title");
@@ -25,7 +34,7 @@ async function sendUserInput() {
   let chattingElement = document.getElementById("chatting");
   let chatHistoryElement = document.getElementById("chatHistory");
 
-  // Add a message if there is no content
+  // Add a system message if there is no content
   if (!userInput) {
     const placeholderMessage = document.createElement("div");
     placeholderMessage.classList.add("chat-bubble", "system-bubble");
@@ -46,12 +55,12 @@ async function sendUserInput() {
     displayChatHistory();
 
     // Add loading message to the chat history
-    chatHistory[chatHistory.length - 1].ai =
-      "Replying! Please wait a moment!";
+    chatHistory[chatHistory.length - 1].ai = "Replying! Please wait a moment!";
     displayChatHistory();
 
     // Fetch the actual AI response
-    const response = await fetch("/chat", { /* "Adjust accordingly based on the Back-End server address */
+    const response = await fetch("/chat", {
+      /* "Adjust accordingly based on the Back-End server address */
       method: "POST",
       headers: {
         "Content-Type": "application/json",
