@@ -1,6 +1,7 @@
 let chatHistory = [];
+let messageIdCounter = 1; // Unique ID for each chat message
 
-// Detecting Enter Key
+// Detect Enter key
 function DataTransfer(event, num) {
   if (num == 1 && event && event.key === "Enter") {
     sendUserInput();
@@ -9,7 +10,7 @@ function DataTransfer(event, num) {
   }
 }
 
-// Event function to scroll the input_box to the top when scrolling
+// Event function to move the input_box to the top when scrolling
 window.addEventListener("scroll", function () {
   const headTitle = document.querySelector(".head_title");
   const inputBox = document.querySelector(".input_box");
@@ -34,33 +35,47 @@ async function sendUserInput() {
   let chattingElement = document.getElementById("chatting");
   let chatHistoryElement = document.getElementById("chatHistory");
 
-  // Add a system message if there is no content
-  if (!userInput) {
+  function system_bubble_msg(chat) {
     const placeholderMessage = document.createElement("div");
     placeholderMessage.classList.add("chat-bubble", "system-bubble");
-    placeholderMessage.innerText = "SYSTEM > No content!";
+    placeholderMessage.innerText = `SYSTEM > ${chat}`;
 
     const chatBoxContainer = document.createElement("div");
     chatBoxContainer.classList.add("chat-box-container");
     chatBoxContainer.appendChild(placeholderMessage);
 
     chatHistoryElement.appendChild(chatBoxContainer);
+  }
+
+  // Add a message if there is no content
+  if (!userInput) {
+    system_bubble_msg("There is no content!");
+    return;
+  }
+
+  if (chatHistory.length > 0 && chatHistory[chatHistory.length - 1].ai === "I'm still composing a response! Please wait a moment!") {
+    system_bubble_msg("I'm still composing the previous response!");
     return;
   }
 
   try {
-    // Add user input to the chat history (Me message)
+    // Add user input to chat history (Me message)
     userInputElement.value = "";
-    chatHistory.push({ user: userInput, ai: "" });
+    const messageId = messageIdCounter++;
+    chatHistory.push({
+      id: messageId,
+      user: userInput,
+      ai: "",
+    });
     displayChatHistory();
 
-    // Add loading message to the chat history
-    chatHistory[chatHistory.length - 1].ai = "Replying! Please wait a moment!";
+    // Add loading message to chat history
+    chatHistory[chatHistory.length - 1].ai =
+      "I'm composing a response! Please wait a moment!";
     displayChatHistory();
 
-    // Fetch the actual AI response
-    const response = await fetch("/chat", {
-      /* "Adjust accordingly based on the Back-End server address */
+    // Fetch actual AI response
+    const response = await fetch("https://api.ournicerver.com/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -72,7 +87,7 @@ async function sendUserInput() {
 
     const data = await response.json();
 
-    // Add the actual AI response to the chat history
+    // Add actual AI response to chat history
     chatHistory[chatHistory.length - 1].ai = data.response;
     displayChatHistory();
   } catch (error) {
@@ -93,7 +108,7 @@ function displayChatHistory() {
   chatHistoryElement.appendChild(chatBoxContainer);
 
   // Display chat history
-  chatHistory.forEach((chat, index) => {
+  chatHistory.forEach((chat) => {
     // Chat box
     const chatBox = document.createElement("div");
     chatBox.classList.add("chat-box");
